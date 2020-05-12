@@ -24,7 +24,7 @@ To obtain login credentials and other permissions, please head over to [infotorg
 
 
 ## API
-### POST ```/```
+### POST ```/lookup```
 
 **Request**
 
