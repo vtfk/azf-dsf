@@ -1,0 +1,33 @@
+{
+  "name": "azf-dsf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "func start",
+    "test": "standard && npm audit",
+    "refresh": "rm -rf node_modules && rm package-lock.json && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vtfk/azf-dsf.git"
+  },
+  "keywords": [
+    "vtfk",
+    "Vestfold og Telemark fylkeskommune",
+    "dsf",
+    "Azure Functions"
+  ],
+  "author": "Mats Andreassen <matsand@live.no> (https://github.com/matsand)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vtfk/azf-dsf/issues"
+  },
+  "homepage": "https://github.com/vtfk/azf-dsf#readme",
+  "dependencies": {
+    "node-dsf": "3.0.17"
+  },
+  "devDependencies": {
+    "standard": "14.3.4"
+  }
+}
