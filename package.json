@@ -28,6 +28,6 @@
     "node-dsf": "3.0.17"
   },
   "devDependencies": {
-    "standard": "14.3.4"
+    "standard": "16.0.3"
   }
 }
