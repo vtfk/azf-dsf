@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/vtfk/azf-dsf#readme",
   "dependencies": {
-    "node-dsf": "3.0.17"
+    "node-dsf": "3.1.0"
   },
   "devDependencies": {
     "standard": "16.0.3"
