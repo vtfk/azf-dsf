@@ -17,7 +17,12 @@ To obtain login credentials and other permissions, please head over to [infotorg
     "DSF_DIST": "PTP", 
     "DSF_SYSTEM_NAVN": "systemnavn",
     "DSF_BRUKERNAVN": "brukernavn",
-    "DSF_PASSORD": "passord"
+    "DSF_PASSORD": "passord",
+    "JWT_SECRET": "Skikkelig hemmelig secret",
+    "PAPERTRAIL_DISABLE_LOGGING": false,
+    "PAPERTRAIL_HOST": "papertrail.host.app",
+    "PAPERTRAIL_HOSTNAME": "systemname",
+    "PAPERTRAIL_PORT": 01234
   }
 }
 ```
@@ -27,7 +32,6 @@ To obtain login credentials and other permissions, please head over to [infotorg
 ### POST ```/lookup```
 
 **Request**
-
 ```json
 {
   "method": "hentDetaljer",
@@ -113,6 +117,84 @@ See valid test data on [infotorg.no](https://qa.infotorg.no/test/cms/site/0/page
       "FODKNR": "1201",
       "FODK": "BERGEN",
       "FODS": {}
+    }
+  }
+}
+```
+
+### POST ```/lookup``` with specified URL
+
+**Request**
+```json
+{
+  "method": "hentDetaljer",
+  "url": "http://ws-test.infotorg.no/xml/ErgoGroup/DSFMasseoppslag1_4/2015-08-10/DSFMasseoppslag1_4.wsdl",
+  "query": {
+    "saksref": "your-reference",
+    "foedselsdato": "010133",
+    "etternavn": "FOS",
+    "fornavn": "IRENE"
+  }
+}
+```
+
+**Response**
+```json
+{
+  "RESULT": {
+    "HOV": {
+      "FODT": "010133",
+      "PERS": "00239",
+      "INR": "01013300309",
+      "FODTAR": "1933",
+      "STAT-KD": "1",
+      "STAT": "BOSATT",
+      "NAVN-S": "MO",
+      "NAVN-F": "IRENE",
+      "NAVN-M": "FOS",
+      "NAVN": "MO IRENE FOS",
+      "NAVN-D": null,
+      "ADRR": "19971001",
+      "ADRF": "19971001",
+      "ADR": "ETTERSTAD",
+      "POSTN": "0603",
+      "POSTS": "OSLO",
+      "KOMNR": "0018",
+      "KOMNA": "REFKOM1",
+      "GARD": "00018",
+      "BRUK": "0018",
+      "ADRTYPE": "M",
+      "INVF": "106",
+      "INVF-N": "SVERIGE",
+      "INVF-R": "19911031",
+      "INVF-F": "19911031",
+      "FKOM": "0019",
+      "FKOM-N": "REFKOM2",
+      "FKOM-R": "19971001",
+      "FKOM-F": "19971001",
+      "UTVT": null,
+      "UTVT-N": null,
+      "UTVT-R": null,
+      "UTVT-F": null,
+      "AARSADR": "26",
+      "SPES-KD": "0",
+      "SPES": "VANLIG BOSATT",
+      "SKKR": "0001",
+      "VAKR": "0001",
+      "MELD": "",
+      "SIVS-KD": "5",
+      "SIVS": "SEPARERT",
+      "Statsborgerskap": [
+        {
+          "STATB-KD": "000",
+          "STATB": "NORSK"
+        }
+      ],
+      "KJONN": "K",
+      "AARSNVN": "02",
+      "FODKNR": "106",
+      "FODK": "SVERIGE",
+      "FODS": null
     }
   }
 }

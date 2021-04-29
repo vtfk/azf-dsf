@@ -6,5 +6,10 @@ module.exports = {
     systemnavn: process.env.DSF_SYSTEM_NAVN || 'systemnavn',
     brukernavn: process.env.DSF_BRUKERNAVN || 'brukernavn',
     passord: process.env.DSF_PASSORD || 'passord'
-  }
+  },
+  JWT_SECRET: process.env.JWT_SECRET || 'Really secret secret',
+  PAPERTRAIL_DISABLE_LOGGING: (process.env.PAPERTRAIL_DISABLE_LOGGING && process.env.PAPERTRAIL_DISABLE_LOGGING === 'true') || false,
+  PAPERTRAIL_HOST: process.env.PAPERTRAIL_HOST || undefined,
+  PAPERTRAIL_HOSTNAME: process.env.PAPERTRAIL_HOSTNAME || undefined,
+  PAPERTRAIL_PORT: process.env.PAPERTRAIL_PORT || undefined
 }
