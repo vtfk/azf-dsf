@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "func start",
-    "test": "standard && npm audit",
+    "test": "standard",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm install"
   },
   "repository": {
