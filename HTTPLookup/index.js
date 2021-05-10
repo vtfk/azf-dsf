@@ -12,8 +12,7 @@ const handleDSF = async (context, req) => {
     else if (!req.body.method) throw new Error('Please pass a method in the request body')
     else if (!req.body.query) throw new Error('Please pass a query in the request body')
     else if (typeof req.body.query !== 'object') throw new Error('Query in request body must be a JSON object')
-  }
-  catch (error) {
+  } catch (error) {
     logger('error', [error.message])
     return getResponse({ error: error.message }, 400)
   }
