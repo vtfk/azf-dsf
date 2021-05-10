@@ -28,12 +28,12 @@ const handleDSF = async (context, req) => {
   }
 
   try {
-    logger('info', ['request', query.saksref, 'url', config.DSF.url])
+    logger('info', ['request', query.saksref, method, config.DSF.url])
     const response = await dsfLookup(options)
-    logger('info', ['response', query.saksref, 'url', config.DSF.url, 'success'])
+    logger('info', ['response', query.saksref, method, config.DSF.url])
     return getResponse(response)
   } catch (error) {
-    logger('error', [error.message || error])
+    logger('error', [query.saksref, method, config.DSF.url, error.message || error])
     return getResponse({ error: error.message }, 500)
   }
 }
