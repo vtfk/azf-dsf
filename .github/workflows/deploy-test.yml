@@ -3,7 +3,7 @@ name: Deploy DSF API to test function app
 on:
   push:
     branches-ignore:
-      - 'main'
+      - 'master'
 
 env:
   AZURE_FUNCTIONAPP_NAME: test-func-dsf-api-v1    # set this to your application's name
