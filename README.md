@@ -38,7 +38,7 @@ To obtain login credentials and other permissions, please head over to [infotorg
   "query": {
     "saksref": "your-reference",
     "foedselsnr": "01013300239",
-    "etternavn": "FOS",
+    "etternavn": "MO",
     "fornavn": "IRENE"
   }
 }
@@ -132,7 +132,7 @@ See valid test data on [infotorg.no](https://qa.infotorg.no/test/cms/site/0/page
   "query": {
     "saksref": "your-reference",
     "foedselsdato": "010133",
-    "etternavn": "FOS",
+    "etternavn": "MO",
     "fornavn": "IRENE"
   }
 }
