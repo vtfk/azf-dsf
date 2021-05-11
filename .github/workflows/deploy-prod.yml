@@ -2,7 +2,7 @@ name: Deploy DSF API to prod function app
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 env:
   AZURE_FUNCTIONAPP_NAME: prod-func-dsf-api-v1    # set this to your application's name
