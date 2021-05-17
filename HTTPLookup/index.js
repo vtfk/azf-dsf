@@ -36,7 +36,7 @@ const handleDSF = async (context, req) => {
     return getResponse(response)
   } catch (error) {
     const { status, message } = getError(error)
-    logger('error', [query.saksref, method, message])
+    logger('error', [query.saksref, method, message, `(${error.SUMMARY || error.message || error})`])
     return getResponse({ error: message }, status)
   }
 }
