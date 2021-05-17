@@ -10,7 +10,9 @@
     "test:jest": "jest",
     "test:watch": "jest --watch",
     "fix": "standard --fix",
-    "refresh": "rm -rf node_modules && rm package-lock.json && npm install"
+    "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
+    "publish:prod": "npm run test && az login && func azure functionapp publish prod-func-dsf-api-v1",
+    "publish:test": "npm run test && az login && func azure functionapp publish test-func-dsf-api-v1"
   },
   "repository": {
     "type": "git",
