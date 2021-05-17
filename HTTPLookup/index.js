@@ -1,7 +1,7 @@
 const dsfLookup = require('node-dsf')
 const { logger } = require('@vtfk/logger')
 const withTokenAuth = require('../lib/with-token-auth')
-const config = require('../config')
+const { DSF } = require('../config')
 const getResponse = require('../lib/get-response')
 const getError = require('../lib/get-error')
 
@@ -18,12 +18,14 @@ const handleDSF = async (context, req) => {
 
   const { method, query, url } = req.body
 
-  if (url) config.DSF.url = url
-  logger('info', [query.saksref, method, 'url', config.DSF.url])
+  if (url) {
+    logger('info', [query.saksref, method, 'url changed', 'from', DSF.url, 'to', url])
+    DSF.url = url
+  } else logger('info', [query.saksref, method, 'url', DSF.url])
 
   const options = {
     method,
-    config: config.DSF,
+    config: DSF,
     query
   }
 
