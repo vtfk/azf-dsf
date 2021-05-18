@@ -13,6 +13,7 @@ To obtain login credentials and other permissions, please head over to [infotorg
     "FUNCTIONS_WORKER_RUNTIME": "node",
     "AzureWebJobsStorage": "",
     "DSF_URL": "http://ws-test.infotorg.no/xml/ErgoGroup/DetSentraleFolkeregister1_4/2015-08-10/DetSentraleFolkeregister1_4.wsdl",
+    "DSF_MASS_URL": "http://ws-test.infotorg.no/xml/ErgoGroup/DSFMasseoppslag1_4/2015-08-10/DSFMasseoppslag1_4.wsdl",
     "DSF_NAMESPACE": "http://ws.infotorg.no/xml/Admin/Brukersesjon/2006-07-07/Brukersesjon.xsd",
     "DSF_DIST": "PTP", 
     "DSF_SYSTEM_NAVN": "systemnavn",
@@ -122,13 +123,13 @@ See valid test data on [infotorg.no](https://qa.infotorg.no/test/cms/site/0/page
 }
 ```
 
-### POST ```/lookup``` with specified URL
+### POST ```/lookup``` for mass lookups
 
 **Request**
 ```json
 {
   "method": "hentDetaljer",
-  "url": "http://ws-test.infotorg.no/xml/ErgoGroup/DSFMasseoppslag1_4/2015-08-10/DSFMasseoppslag1_4.wsdl",
+  "massLookup": true,
   "query": {
     "saksref": "your-reference",
     "foedselsdato": "010133",
