@@ -1,7 +1,7 @@
 const dsfLookup = require('node-dsf')
 const { logger } = require('@vtfk/logger')
 const withTokenAuth = require('../lib/with-token-auth')
-const config = require('../config')
+const { DSF, DSF_URL, DSF_MASS_URL } = require('../config')
 const getResponse = require('../lib/get-response')
 const getError = require('../lib/get-error')
 
@@ -16,14 +16,15 @@ const handleDSF = async (context, req) => {
     return getResponse({ error: error.message }, 400)
   }
 
-  const { method, query, url } = req.body
+  const { method, query, massLookup } = req.body
 
-  if (url) config.DSF.url = url
-  logger('info', [query.saksref, method, 'url', config.DSF.url])
+  if (massLookup) DSF.url = DSF_MASS_URL
+  else DSF.url = DSF_URL
+  logger('info', [query.saksref, method, 'url', DSF.url])
 
   const options = {
     method,
-    config: config.DSF,
+    config: DSF,
     query
   }
 
@@ -34,7 +35,7 @@ const handleDSF = async (context, req) => {
     return getResponse(response)
   } catch (error) {
     const { status, message } = getError(error)
-    logger('error', [query.saksref, method, message])
+    logger('error', [query.saksref, method, message, `(${error.SUMMARY || error.message || error})`])
     return getResponse({ error: message }, status)
   }
 }
