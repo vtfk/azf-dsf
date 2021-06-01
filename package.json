@@ -31,12 +31,12 @@
   },
   "homepage": "https://github.com/vtfk/azf-dsf#readme",
   "dependencies": {
-    "@vtfk/logger": "2.5.1",
+    "@vtfk/logger": "2.5.2",
     "jsonwebtoken": "8.5.1",
     "node-dsf": "3.1.0"
   },
   "devDependencies": {
-    "jest": "26.6.3",
+    "jest": "27.0.3",
     "standard": "16.0.3"
   },
   "standard": {
