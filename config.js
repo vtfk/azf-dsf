@@ -9,8 +9,5 @@ module.exports = {
   DSF_URL: process.env.DSF_URL || 'http://ws-test.infotorg.no/xml/ErgoGroup/DetSentraleFolkeregister1_4/2015-08-10/DetSentraleFolkeregister1_4.wsdl',
   DSF_MASS_URL: process.env.DSF_MASS_URL || 'http://ws-test.infotorg.no/xml/ErgoGroup/DSFMasseoppslag1_4/2015-08-10/DSFMasseoppslag1_4.wsdl',
   JWT_SECRET: process.env.JWT_SECRET || 'Really secret secret',
-  PAPERTRAIL_DISABLE_LOGGING: (process.env.PAPERTRAIL_DISABLE_LOGGING && process.env.PAPERTRAIL_DISABLE_LOGGING === 'true') || false,
-  PAPERTRAIL_HOST: process.env.PAPERTRAIL_HOST || undefined,
-  PAPERTRAIL_HOSTNAME: process.env.PAPERTRAIL_HOSTNAME || undefined,
-  PAPERTRAIL_PORT: process.env.PAPERTRAIL_PORT || undefined
+  PAPERTRAIL_DISABLE_LOGGING: (process.env.PAPERTRAIL_DISABLE_LOGGING && process.env.PAPERTRAIL_DISABLE_LOGGING === 'true') || false
 }

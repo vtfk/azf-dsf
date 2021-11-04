@@ -21,9 +21,8 @@ To obtain login credentials and other permissions, please head over to [infotorg
     "DSF_PASSORD": "passord",
     "JWT_SECRET": "Skikkelig hemmelig secret",
     "PAPERTRAIL_DISABLE_LOGGING": false,
-    "PAPERTRAIL_HOST": "papertrail.host.app",
-    "PAPERTRAIL_HOSTNAME": "systemname",
-    "PAPERTRAIL_PORT": 01234
+    "PAPERTRAIL_HOST": "https://logs.collector.solarwinds.com/v1/log",
+    "PAPERTRAIL_TOKEN": "hgbegpgnq4gbnpq49glbpuqpqgpqgqeøå9eqor"
   }
 }
 ```
