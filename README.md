@@ -5,6 +5,9 @@ DSF is register of residents in Norway.
 To obtain login credentials and other permissions, please head over to [infotorg.no](https://www.infotorg.no/).
 
 ## Azure Function
+
+### **All calls need a valid JSON Web Token**
+
 ### Application settings (``local.settings.json``):
 ```json
 {
