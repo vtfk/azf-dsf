@@ -2,9 +2,10 @@
 name: Deploy DSF API to test function app
 
 on:
+  workflow_dispatch:
   push:
-    branches-ignore:
-      - 'master'
+    branches: ['**']
+  pull_request:
 
 env:
   AZURE_FUNCTIONAPP_NAME: 'test-func-dsf-api-v1'    # set this to your application's name
