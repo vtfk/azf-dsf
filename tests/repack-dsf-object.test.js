@@ -188,7 +188,7 @@ describe('Return correct address fields when', () => {
   test('ADR1-3 is set, postAdresse.POSTN and postAdresse.POSTS is set correctly, even when ADR3 has a weird setup', () => {
     const repacked = repack(personAdditionalAddress2)
     expect(repacked.RESULT.HOV.postAdresse.POSTN.length === 4 && !isNaN(repacked.RESULT.HOV.postAdresse.POSTN)).toBe(true)
-    expect(repacked.RESULT.HOV.postAdresse.POSTS.length).toBe(personAdditionalAddress2.RESULT.HOV.ADR3.length-repacked.RESULT.HOV.postAdresse.POSTN.length-1)
+    expect(repacked.RESULT.HOV.postAdresse.POSTS.length).toBe(personAdditionalAddress2.RESULT.HOV.ADR3.length - repacked.RESULT.HOV.postAdresse.POSTN.length - 1)
   })
 
   test('ADR1-3 is not set set (Should have original ADR, POSTS, POSTN in postAdresse)', () => {
