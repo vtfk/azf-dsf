@@ -31,6 +31,7 @@ const handleDSF = async (context, req) => {
   try {
     logger('info', [query.saksref, method, 'request'])
     const response = await dsfLookup(options)
+    if (!response.RESULT.HOV) throw new Error(`Too many found (${Number(response.RESULT.ANTAFUN)})`)
     logger('info', [query.saksref, method, 'response'])
     return getResponse(response)
   } catch (error) {
