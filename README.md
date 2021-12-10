@@ -32,6 +32,13 @@ To obtain login credentials and other permissions, please head over to [infotorg
 
 
 ## API
+
+**Address will not be returned for persons with these SPES-KD codes**:
+- **4**: *KLIENTADRESSE*
+- **5**: *UTEN FAST BO.*
+- **6**: *SPERRET ADRESSE, STRENGT FORTROLIG*
+- **7**: *SPERRET ADRESSE, FORTROLIG*
+
 ### POST ```/lookup```
 
 **Request**
@@ -40,106 +47,12 @@ To obtain login credentials and other permissions, please head over to [infotorg
   "method": "hentDetaljer",
   "query": {
     "saksref": "your-reference",
-    "foedselsnr": "01013300239",
-    "etternavn": "MO",
-    "fornavn": "IRENE"
+    "foedselsdato": "01013300239"
   }
 }
 ```
 
 See valid test data on [infotorg.no](https://qa.infotorg.no/test/cms/site/0/page?id=77)
-
-**Response**
-```json
-{
-  "RESULT": {
-    "HOV": {
-      "FODT": "220486",
-      "PERS": "12345",
-      "INR": "22048612345",
-      "FODTAR": "1986",
-      "STAT-KD": "1",
-      "STAT": "BOSATT",
-      "NAVN-S": "GRÅ",
-      "NAVN-F": "GANDALF",
-      "NAVN-M": {},
-      "NAVN": "GRÅ GANDALF",
-      "NAVN-D": {},
-      "ADRR": "20060822",
-      "ADRF": "20060818",
-      "ADR": "SNIPPETSTADSTREDET 24",
-      "POSTN": "1732",
-      "POSTS": "HØTTEN",
-      "KOMNR": "0707",
-      "KOMNA": "HØTTEN",
-      "GATE": "01880",
-      "HUS": "0024",
-      "ADRTYPE": "O",
-      "FKOM": "0501",
-      "FKOM-N": "LILLEHAMMER",
-      "FKOM-R": "19990713",
-      "FKOM-F": "19990701",
-      "UTVT": {},
-      "UTVT-N": {},
-      "UTVT-R": {},
-      "UTVT-F": {},
-      "AARSADR": "24",
-      "SPES-KD": "0",
-      "SPES": "VANLIG BOSATT",
-      "SKKR": "0005",
-      "VAKR": "0010",
-      "GRUNNKR": "0411",
-      "MELD": {},
-      "K-FAMNR": "22048612345",
-      "FAMNR-D": "19980718",
-      "PERSKODE": "1",
-      "EKT-FODT": "050180",
-      "EKT-PERS": "54321",
-      "EKT-INR": "05018054321",
-      "Barn": [
-        {
-          "BAR-FODT": "080907",
-          "BAR-PERS": "98765",
-          "BAR-INR": "08090798765",
-          "BAR-KJO": "K"
-        },
-        {
-          "BAR-FODT": "070603",
-          "BAR-PERS": "56789",
-          "BAR-INR": "07060356789",
-          "BAR-KJO": "M"
-        }
-      ],
-      "MOR-FODT": "030450",
-      "MOR-PERS": "19285",
-      "MOR-INR": "03045019285",
-      "FAR-FODT": "020850",
-      "FAR-PERS": "91825",
-      "FAR-INR": "1928591825",
-      "KJONN": "M",
-      "FODKNR": "1201",
-      "FODK": "BERGEN",
-      "FODS": {}
-    }
-  }
-}
-```
-
-### POST ```/lookup``` for mass lookups
-
-**Request**
-```json
-{
-  "method": "hentDetaljer",
-  "massLookup": true,
-  "query": {
-    "saksref": "your-reference",
-    "foedselsdato": "010133",
-    "etternavn": "MO",
-    "fornavn": "IRENE"
-  }
-}
-```
 
 **Response**
 ```json
@@ -152,14 +65,14 @@ See valid test data on [infotorg.no](https://qa.infotorg.no/test/cms/site/0/page
       "FODTAR": "1933",
       "STAT-KD": "1",
       "STAT": "BOSATT",
-      "NAVN-S": "MO",
-      "NAVN-F": "IRENE",
-      "NAVN-M": "FOS",
-      "NAVN": "MO IRENE FOS",
+      "NAVN-S": "Mo",
+      "NAVN-F": "Irene",
+      "NAVN-M": "Fos",
+      "NAVN": "Mo Irene Fos",
       "NAVN-D": null,
       "ADRR": "19971001",
       "ADRF": "19971001",
-      "ADR": "ETTERSTAD",
+      "ADR": "Etterstad",
       "POSTN": "0603",
       "POSTS": "OSLO",
       "KOMNR": "0018",
@@ -197,7 +110,107 @@ See valid test data on [infotorg.no](https://qa.infotorg.no/test/cms/site/0/page
       "AARSNVN": "02",
       "FODKNR": "106",
       "FODK": "SVERIGE",
-      "FODS": null
+      "FODS": null,
+      "FNR": "01013300239",
+      "bostedsAdresse": {
+        "ADR": "Etterstad",
+        "POSTN": "0603",
+        "POSTS": "OSLO"
+      },
+      "postAdresse": {
+        "ADR": "Etterstad",
+        "POSTN": "0603",
+        "POSTS": "OSLO"
+      }
+    }
+  }
+}
+```
+
+### POST ```/lookup``` for mass lookups
+
+**Request**
+```json
+{
+  "method": "hentDetaljer",
+  "massLookup": true,
+  "query": {
+    "saksref": "your-reference",
+    "foedselsdato": "010133",
+    "etternavn": "Mo",
+    "fornavn": "Irene"
+  }
+}
+```
+
+**Response**
+```json
+{
+  "RESULT": {
+    "HOV": {
+      "FODT": "010133",
+      "PERS": "00239",
+      "INR": "01013300309",
+      "FODTAR": "1933",
+      "STAT-KD": "1",
+      "STAT": "BOSATT",
+      "NAVN-S": "Mo",
+      "NAVN-F": "Irene",
+      "NAVN-M": "Fos",
+      "NAVN": "Mo Irene Fos",
+      "NAVN-D": null,
+      "ADRR": "19971001",
+      "ADRF": "19971001",
+      "ADR": "Etterstad",
+      "POSTN": "0603",
+      "POSTS": "OSLO",
+      "KOMNR": "0018",
+      "KOMNA": "REFKOM1",
+      "GARD": "00018",
+      "BRUK": "0018",
+      "ADRTYPE": "M",
+      "INVF": "106",
+      "INVF-N": "SVERIGE",
+      "INVF-R": "19911031",
+      "INVF-F": "19911031",
+      "FKOM": "0019",
+      "FKOM-N": "REFKOM2",
+      "FKOM-R": "19971001",
+      "FKOM-F": "19971001",
+      "UTVT": null,
+      "UTVT-N": null,
+      "UTVT-R": null,
+      "UTVT-F": null,
+      "AARSADR": "26",
+      "SPES-KD": "0",
+      "SPES": "VANLIG BOSATT",
+      "SKKR": "0001",
+      "VAKR": "0001",
+      "MELD": "",
+      "SIVS-KD": "5",
+      "SIVS": "SEPARERT",
+      "Statsborgerskap": [
+        {
+          "STATB-KD": "000",
+          "STATB": "NORSK"
+        }
+      ],
+      "KJONN": "K",
+      "AARSNVN": "02",
+      "FODKNR": "106",
+      "FODK": "SVERIGE",
+      "FODS": null,
+      "FNR": "01013300239",
+      "bostedsAdresse": {
+        "ADR": "Etterstad",
+        "POSTN": "0603",
+        "POSTS": "OSLO"
+      },
+      "postAdresse": {
+        "ADR": "Etterstad",
+        "POSTN": "0603",
+        "POSTS": "OSLO"
+      }
     }
   }
 }

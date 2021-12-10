@@ -2,6 +2,7 @@ const dsfLookup = require('node-dsf')
 const { logger } = require('@vtfk/logger')
 const withTokenAuth = require('../lib/with-token-auth')
 const { DSF, DSF_URL, DSF_MASS_URL } = require('../config')
+const repackDsfObject = require('../lib/repack-dsf-object')
 const getResponse = require('../lib/get-response')
 const getError = require('../lib/get-error')
 
@@ -31,8 +32,10 @@ const handleDSF = async (context, req) => {
   try {
     logger('info', [query.saksref, method, 'request'])
     const response = await dsfLookup(options)
+    if (!response.RESULT.HOV) throw new Error(`Too many found (${Number(response.RESULT.ANTAFUN)})`)
+    const repack = repackDsfObject(response)
     logger('info', [query.saksref, method, 'response'])
-    return getResponse(response)
+    return getResponse(repack)
   } catch (error) {
     const { status, message } = getError(error)
     logger('error', [query.saksref, method, message, `(${error.SUMMARY || error.message || error})`])
