@@ -4,6 +4,10 @@ DSF is register of residents in Norway.
 
 To obtain login credentials and other permissions, please head over to [infotorg.no](https://www.infotorg.no/).
 
+Infotorg field descripton: [Funksjonell feltoversikt - Det sentrale folkeregister](https://www.infotorg.no/leveranse/integrasjonen/integrasjon-mot-folkeregisteret/_/attachment/download/f6d059b7-2098-491f-ba92-0ab2939ef084:f14d2e79b7f0e76c87ae136622d53ce9e43ed6ab/Funksjonell%20feltoversikt%20Det%20sentrale%20folkeregister%20v1-5.pdf)
+
+Not in use, but useful info: [Informasjonsmodell modernisert folkeregister](https://skatteetaten.github.io/folkeregisteret-api-dokumentasjon/informasjonsmodell/)
+
 ## Azure Function
 
 ### **All calls need a valid JSON Web Token**
