@@ -1,5 +1,5 @@
 const dsfLookup = require('node-dsf')
-const { logger } = require('@vtfk/logger')
+const { logger, logConfig } = require('@vtfk/logger')
 const withTokenAuth = require('../lib/with-token-auth')
 const { DSF, DSF_URL, DSF_MASS_URL } = require('../config')
 const repackDsfObject = require('../lib/repack-dsf-object')
@@ -21,7 +21,10 @@ const handleDSF = async (context, req) => {
 
   if (massLookup) DSF.url = DSF_MASS_URL
   else DSF.url = DSF_URL
-  logger('info', [query.saksref, method, 'url', DSF.url])
+  logConfig({
+    prefix: `${context.invocationId}${query.saksref ? ` - ${query.saksref}` : ''}${` - ${method}`}`
+  })
+  logger('info', ['url', DSF.url])
 
   const options = {
     method,
@@ -30,15 +33,15 @@ const handleDSF = async (context, req) => {
   }
 
   try {
-    logger('info', [query.saksref, method, 'request'])
+    logger('info', ['request'])
     const response = await dsfLookup(options)
     if (!response.RESULT.HOV) throw new Error(`Too many found (${Number(response.RESULT.ANTAFUN)})`)
     const repack = repackDsfObject(response)
-    logger('info', [query.saksref, method, 'response'])
+    logger('info', ['response'])
     return getResponse(repack)
   } catch (error) {
     const { status, message } = getError(error)
-    logger('error', [query.saksref, method, message, `(${error.SUMMARY || error.message || error})`])
+    logger('error', [message, `(${error.SUMMARY || error.message || error})`])
     return getResponse({ error: message }, status)
   }
 }
