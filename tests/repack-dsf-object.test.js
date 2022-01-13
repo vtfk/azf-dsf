@@ -94,6 +94,16 @@ const personAdditionalAddress2 = {
   }
 }
 
+const personAdditionalAddressButNotADR3 = {
+  RESULT: {
+    HOV: {
+      ...person,
+      ADR1: 'Oppholdsboligen på tunet 5c',
+      ADR2: 'Husøysund 2000'
+    }
+  }
+}
+
 const justPerson = {
   RESULT: {
     HOV: {
@@ -133,12 +143,11 @@ const invalidADR3POSTS = {
     }
   }
 }
-const noADR3 = {
+const onlyADR1 = {
   RESULT: {
     HOV: {
       ...personWithoutADR,
-      ADR1: 'Kjuttaviga',
-      ADR2: 'Turid'
+      ADR1: 'Kjuttaviga'
     }
   }
 }
@@ -205,6 +214,20 @@ describe('Return correct address fields when', () => {
     expect(repacked.RESULT.HOV.POSTN).toBe(justPerson.RESULT.HOV.POSTN)
     expect(repacked.RESULT.HOV.POSTS.toLowerCase()).toBe(justPerson.RESULT.HOV.POSTS.toLowerCase())
   })
+
+  test('Both ADR, POSTN, POSTS and ADR1, ADR2, ADR3 is set', () => {
+    const repacked = repack(personAdditionalAddress2)
+    expect(repacked.RESULT.HOV.bostedsAdresse.ADR === repacked.RESULT.HOV.postAdresse.ADR).toBe(false)
+    expect(repacked.RESULT.HOV.bostedsAdresse.POSTS === repacked.RESULT.HOV.postAdresse.POSTS).toBe(false)
+    expect(repacked.RESULT.HOV.bostedsAdresse.POSTN === repacked.RESULT.HOV.postAdresse.POSTN).toBe(false)
+  })
+
+  test('ADR, POSTN, POSTS, ADR1 and ADR2 is set, ADR3 is not set', () => {
+    const repacked = repack(personAdditionalAddressButNotADR3)
+    expect(repacked.RESULT.HOV.postAdresse.ADR.toLowerCase()).toBe(personAdditionalAddressButNotADR3.RESULT.HOV.ADR1.toLowerCase())
+    expect(repacked.RESULT.HOV.postAdresse.POSTS.toLowerCase()).toBe(personAdditionalAddressButNotADR3.RESULT.HOV.ADR2.split(' ')[0].toLowerCase())
+    expect(repacked.RESULT.HOV.postAdresse.POSTN).toBe(personAdditionalAddressButNotADR3.RESULT.HOV.ADR2.split(' ')[1])
+  })
 })
 
 test('Returns POSTS and POSTN when no valid zipCode or zipPlace is found in ADR3', () => {
@@ -224,10 +247,10 @@ describe('Returns postAdresse object with property-values POSTS: "UKJENT" and PO
     expect(repacked.RESULT.HOV.postAdresse.POSTS.toLowerCase()).toBe('ukjent')
     expect(repacked.RESULT.HOV.postAdresse.POSTN).toBe('9999')
   })
-  test('ADR3 does not exist', () => {
-    const fn = () => repack(noADR3)
-    expect(fn).toThrow(Error)
-  })
+})
+test('Throws Error when only ADR1 is defined (no other address fields)', () => {
+  const fn = () => repack(onlyADR1)
+  expect(fn).toThrow(Error)
 })
 
 test('Address is not all uppercase when repacked', () => {
