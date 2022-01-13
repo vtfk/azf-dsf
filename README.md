@@ -60,6 +60,7 @@ Not in use, but useful info: [Informasjonsmodell modernisert folkeregister](http
   "method": "hentDetaljer",
   "query": {
     "saksref": "your-reference",
+    "internalref": "your-internal-reference", // optional if you want an internal reference logged out with the request
     "foedselsdato": "01013300239"
   }
 }
@@ -149,6 +150,7 @@ See valid test data on [infotorg.no](https://qa.infotorg.no/test/cms/site/0/page
   "massLookup": true,
   "query": {
     "saksref": "your-reference",
+    "internalref": "your-internal-reference", // optional if you want an internal reference logged out with the request
     "foedselsdato": "010133",
     "etternavn": "Mo",
     "fornavn": "Irene"

@@ -18,11 +18,13 @@ const handleDSF = async (context, req) => {
   }
 
   const { method, query, massLookup } = req.body
+  const internalref = query.internalref
+  if (internalref) delete query.internalref
 
   if (massLookup) DSF.url = DSF_MASS_URL
   else DSF.url = DSF_URL
   logConfig({
-    prefix: `${context.invocationId}${query.saksref ? ` - ${query.saksref}` : ''}${` - ${method}`}`
+    prefix: `${context.invocationId}${query.saksref ? ` - ${query.saksref}` : ''}${internalref ? ` - ${internalref}` : ''}${` - ${method}`}`
   })
   logger('info', ['url', DSF.url])
 
