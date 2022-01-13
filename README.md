@@ -37,11 +37,20 @@ Not in use, but useful info: [Informasjonsmodell modernisert folkeregister](http
 
 ## API
 
-**Address will not be returned for persons with these SPES-KD codes**:
+**Actual address will not be returned for persons with these SPES-KD codes**:
 - **4**: *KLIENTADRESSE*
 - **5**: *UTEN FAST BO.*
 - **6**: *SPERRET ADRESSE, STRENGT FORTROLIG*
 - **7**: *SPERRET ADRESSE, FORTROLIG*
+
+**Actual address will not be returned for persons with these STAT-KD codes**:
+- **5**: *DØD*
+- **8**: *ANNULLERT TILGANG*
+- **9**: *Uregistrert*
+
+**Actual address will not be returned when**:
+- *STAT* **is** *UTVANDRET*
+- *ADRL* **is defined (has address outside of Norway)**
 
 ### POST ```/lookup```
 
