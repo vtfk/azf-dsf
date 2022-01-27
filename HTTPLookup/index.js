@@ -43,7 +43,7 @@ const handleDSF = async (context, req) => {
     return getResponse(repack)
   } catch (error) {
     const { status, message } = getError(error)
-    logger('error', [message, `(${error.SUMMARY || error.message || error})`])
+    logger('error', [message, `(${error})`])
     return getResponse({ error: message }, status)
   }
 }
