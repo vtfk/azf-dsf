@@ -1,5 +1,6 @@
 const dsfLookup = require('node-dsf')
 const { logger, logConfig } = require('@vtfk/logger')
+const { create: roadRunner } = require('@vtfk/e18')
 const withTokenAuth = require('../lib/with-token-auth')
 const { DSF, DSF_URL, DSF_MASS_URL } = require('../config')
 const repackDsfObject = require('../lib/repack-dsf-object')
@@ -14,6 +15,7 @@ const handleDSF = async (context, req) => {
     else if (typeof req.body.query !== 'object') throw new Error('Query in request body must be a JSON object')
   } catch (error) {
     logger('error', [error.message])
+    await roadRunner(req, { status: 'failed', error: error.message }, context)
     return getResponse({ error: error.message }, 400)
   }
 
@@ -40,9 +42,11 @@ const handleDSF = async (context, req) => {
     if (!response.RESULT.HOV) throw new Error(`Too many found (${Number(response.RESULT.ANTAFUN)})`)
     const repack = repackDsfObject(response)
     logger('info', ['response'])
+    await roadRunner(req, { status: 'completed', data: repack }, context)
     return getResponse(repack)
   } catch (error) {
     const { status, message } = getError(error)
+    await roadRunner(req, { status: 'failed', error: message }, context)
     logger('error', [message, `(${error})`])
     return getResponse({ error: message }, status)
   }

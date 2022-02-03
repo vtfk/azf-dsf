@@ -29,11 +29,17 @@ Not in use, but useful info: [Informasjonsmodell modernisert folkeregister](http
     "JWT_SECRET": "Skikkelig hemmelig secret",
     "PAPERTRAIL_DISABLE_LOGGING": false,
     "PAPERTRAIL_HOST": "https://logs.collector.solarwinds.com/v1/log",
-    "PAPERTRAIL_TOKEN": "hgbegpgnq4gbnpq49glbpuqpqgpqgqeøå9eqor"
+    "PAPERTRAIL_TOKEN": "hgbegpgnq4gbnpq49glbpuqpqgpqgqeøå9eqor",
+    "E18_URL": "https://e18url.net", // optional
+    "E18_KEY": "secret token", // optional
+    "E18_SYSTEM": "dsf" // optional
   }
 }
 ```
 
+### E18
+
+To support E18, add `E18_URL`, `E18_KEY` and `E18_SYSTEM`
 
 ## API
 
