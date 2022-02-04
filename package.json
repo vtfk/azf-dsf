@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/vtfk/azf-dsf#readme",
   "dependencies": {
-    "@vtfk/e18": "2.0.2",
+    "@vtfk/e18": "2.0.3",
     "@vtfk/logger": "4.1.2",
     "capitalize": "2.0.4",
     "jsonwebtoken": "8.5.1",
