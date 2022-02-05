@@ -39,7 +39,7 @@ Not in use, but useful info: [Informasjonsmodell modernisert folkeregister](http
 
 ### E18
 
-To support E18, add `E18_URL`, `E18_KEY` and `E18_SYSTEM`
+To support [E18](https://github.com/vtfk/e18-node#usage), add `E18_URL`, `E18_KEY` and `E18_SYSTEM`
 
 ## API
 
