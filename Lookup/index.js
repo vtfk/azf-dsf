@@ -46,7 +46,8 @@ const handleDSF = async (context, req) => {
     return getResponse(repack)
   } catch (error) {
     const { status, message } = getError(error)
-    await roadRunner(req, { status: 'failed', error, message }, context)
+    const e18Error = error?.root?.Envelope?.Body?.Fault || error
+    await roadRunner(req, { status: 'failed', error: e18Error, message }, context)
     logger('error', [message, `(${error})`])
     return getResponse({ error: message }, status)
   }
