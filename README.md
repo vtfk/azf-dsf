@@ -32,7 +32,8 @@ Not in use, but useful info: [Informasjonsmodell modernisert folkeregister](http
     "PAPERTRAIL_TOKEN": "hgbegpgnq4gbnpq49glbpuqpqgpqgqeøå9eqor",
     "E18_URL": "https://e18url.net", // optional
     "E18_KEY": "secret token", // optional
-    "E18_SYSTEM": "dsf" // optional
+    "E18_SYSTEM": "dsf", // optional
+    "E18_EMPTY_JOB": true // optional
   }
 }
 ```
