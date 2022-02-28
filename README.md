@@ -8,6 +8,8 @@ Infotorg field descripton: [Funksjonell feltoversikt - Det sentrale folkeregiste
 
 Not in use, but useful info: [Informasjonsmodell modernisert folkeregister](https://skatteetaten.github.io/folkeregisteret-api-dokumentasjon/informasjonsmodell/)
 
+Valid test-objects are found here: [Oversikt over gyldige testobjekter](https://www.infotorg.no/leveranse/integrasjonen/integrasjon-mot-folkeregisteret)
+
 ## Azure Function
 
 ### **All calls need a valid JSON Web Token**
