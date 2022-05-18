@@ -45,11 +45,12 @@ const handleDSF = async (context, req) => {
     await roadRunner(req, { status: 'completed', data: repack }, context)
     return getResponse(repack)
   } catch (error) {
-    const { status, message } = getError(error)
+    const { status, message, extras } = getError(error)
     const e18Error = error?.root?.Envelope?.Body?.Fault || error
-    await roadRunner(req, { status: 'failed', error: e18Error, message }, context)
-    logger('error', [message, `(${error})`])
-    return getResponse({ error: message }, status)
+    const errorMessage = extras ? { message, extras } : message
+    await roadRunner(req, { status: 'failed', error: e18Error, message: errorMessage }, context)
+    logger('error', [errorMessage, `(${error})`])
+    return getResponse({ error: errorMessage }, status)
   }
 }
 
