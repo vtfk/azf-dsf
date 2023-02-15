@@ -248,9 +248,12 @@ describe('Returns postAdresse object with property-values POSTS: "UKJENT" and PO
     expect(repacked.RESULT.HOV.postAdresse.POSTN).toBe('9999')
   })
 })
-test('Throws Error when only ADR1 is defined (no other address fields)', () => {
-  const fn = () => repack(onlyADR1)
-  expect(fn).toThrow(Error)
+test('Returns ukjent and 9999 when only ADR1 is defined (no other address fields)', () => {
+  // const fn = () => repack(onlyADR1)
+  // expect(fn).toThrow(Error)
+  const repacked = repack(onlyADR1)
+  expect(repacked.RESULT.HOV.postAdresse.POSTS.toLowerCase()).toBe('ukjent')
+  expect(repacked.RESULT.HOV.postAdresse.POSTN).toBe('9999')
 })
 
 test('Address is not all uppercase when repacked', () => {
