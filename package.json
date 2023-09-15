@@ -38,7 +38,7 @@
     "node-dsf": "3.1.0"
   },
   "devDependencies": {
-    "jest": "27.5.1",
+    "jest": "29.7.0",
     "standard": "16.0.4"
   },
   "standard": {
